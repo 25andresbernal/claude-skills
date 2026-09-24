@@ -52,7 +52,7 @@ unless the fix requires information only they have.
 
 - [ ] No invented user counts, percentages, or revenue figures. Anything
       not confirmed by the user or supplied source material is marked
-      VERIFY or written qualitatively instead.
+      flagged as unconfirmed or written qualitatively instead.
 - [ ] No competitor or customer claims that were not in the input material.
 
 ## Overall

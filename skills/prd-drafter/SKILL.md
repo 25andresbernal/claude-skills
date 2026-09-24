@@ -82,4 +82,4 @@ if it genuinely requires information only the user has.
 - Treating "non-goals" as a restatement of scope in the negative. A good
   non-goal names something a reader would otherwise assume is included.
 - Fabricating a user quote, a percentage, or a competitor detail because
-  the draft "reads better" with one. Mark it VERIFY or leave it out.
+  the draft "reads better" with one. Flag it as unconfirmed or leave it out.
