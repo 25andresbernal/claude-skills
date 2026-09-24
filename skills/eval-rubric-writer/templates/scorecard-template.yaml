@@ -1,0 +1,54 @@
+# Scorecard template, compatible with the agent-evals runner:
+# https://github.com/25andresbernal/agent-evals
+#
+# Copy this file to scorecard.yaml in the target eval suite folder and
+# fill in every placeholder. Dimension weights must sum to 1.0.
+
+name: [Agent or feature name] Scorecard
+pass_threshold: 0.75 # weighted average across dimensions required to pass
+
+dimensions:
+  # A dimension that checks whether the output contains what it must.
+  # scorer: task_success, config.mode is one of exact | contains | custom
+  - name: task_success
+    scorer: task_success
+    weight: 0.35
+    threshold: 0.8
+    config:
+      mode: contains
+
+  # A dimension that checks the agent called the right tool with the
+  # right arguments. Only relevant for agents that call tools.
+  - name: tool_correctness
+    scorer: tool_correctness
+    weight: 0.30
+    threshold: 0.8
+    config:
+      strict: false # true requires an exact argument match, no extras allowed
+
+  # A dimension scored by an LLM judge against a written rubric. Use this
+  # for qualities that cannot be checked with a string match: tone,
+  # helpfulness, whether the response overpromises.
+  - name: quality
+    scorer: llm_judge
+    weight: 0.20
+    threshold: 0.6
+    config:
+      rubric: >
+        [Write the rubric as instructions to the judge model. State what a
+        1.0 response looks like and what a 0.0 response looks like. Be
+        specific about tone, accuracy, and anything the agent must not do.]
+
+  - name: cost
+    scorer: cost
+    weight: 0.10
+    threshold: 0.9
+    config:
+      max_cost_usd: 0.005 # set to what a single call should cost at most
+
+  - name: latency
+    scorer: latency
+    weight: 0.05
+    threshold: 0.9
+    config:
+      max_latency_ms: 500 # set to what a single call should take at most

@@ -1,0 +1,26 @@
+# Cases template, compatible with the agent-evals runner:
+# https://github.com/25andresbernal/agent-evals
+#
+# Copy this file to cases.yaml in the target eval suite folder. Each case
+# is one input the agent should handle correctly, what the output must
+# contain, and which tool call (if any) is expected. Seed cases from real
+# failure reports first, then add a few clean happy-path and edge-case
+# examples.
+
+- id: [short-kebab-case-id] # unique, describes the scenario
+  input: "[the message or request the agent receives]"
+  tags: [tier1] # free-form; use tags like tier1, edge-case, regression
+  notes: "[why this case exists, especially for a regression case seeded from a failure report]"
+  expected_output_contains:
+    - "[a substring the response must contain]"
+  expected_tool_calls:
+    - name: [tool_name]
+      args:
+        [arg_name]: [expected value, or null if any value is acceptable]
+
+- id: [second-case-id]
+  input: "[a case with no expected tool call, e.g. a fallback response]"
+  tags: [fallback]
+  expected_output_contains:
+    - "[substring]"
+  expected_tool_calls: []
