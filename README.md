@@ -151,8 +151,6 @@ open question with you as owner rather than inventing a number.
 
 ## Design decisions
 
-A few choices worth knowing about, and the tradeoff behind each one.
-
 - **Every skill interviews before it drafts, and refuses to fabricate an
   input it wasn't given.** The tradeoff is a slower first turn: the user
   answers questions instead of getting instant output. That is
@@ -187,7 +185,7 @@ A few choices worth knowing about, and the tradeoff behind each one.
 
 ## Contributing
 
-Issues and pull requests are welcome. Before opening a pull request:
+Pull requests that sharpen a skill's decision rules or add a worked example are the most useful kind. Before opening one, run the validator:
 
 ```bash
 python scripts/validate_skills.py
